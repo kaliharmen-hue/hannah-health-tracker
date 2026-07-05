@@ -1,0 +1,433 @@
+# Personal Training Client Tracker
+
+## Purpose
+
+This tracker is designed to help identify real-life patterns affecting weight loss, training consistency, energy, recovery and resilience.
+
+Do not worry about bad days, we all have them, the point of getting really real on the answers is that ChatGPT in it’s analysis for you, may help you to see why, and be able to suggest how you can optimise things to help support your goals. 
+
+The aim is to notice what is actually happening across the week, including training, steps, sleep disruption, energy, symptoms, food consistency, stress, parenting load, illness and period or pre-bleed patterns.
+
+---
+
+## How To Use This Tracker
+
+This tracker is designed to be quick. You do not need to fill everything in at the same time, as it will auto save as you go. 
+
+You could answer the sleep questions in the morning and do the rest in the evening, or fill in bits as they day goes on, if you don’t want to forget anything, 
+
+Weekly measurements only need to be completed once per week, ideally on the same day each week and under similar conditions.
+
+For example:
+
+- same day of the week
+- similar time of day
+- before food where possible
+- similar clothing
+- same scales and measuring tape
+
+Remember that measurements can be influenced by water retention, bloating etc. The point of doing all of this is to try to notice patterns over time. 
+
+# Daily Check-In
+
+## Date
+
+`Date`
+
+---
+
+## Sleep / Recovery
+
+### Sleep quality last night
+
+Choose one:
+
+- Good
+- Okay
+- Poor
+- Very poor
+
+### Was sleep disrupted last night?
+
+Choose one:
+
+- No
+- Yes — child woke
+- Yes — illness
+- Yes — stress / racing mind
+- Yes — other
+- Not sure
+
+---
+
+## Energy / Capacity
+
+### Usable energy today
+
+Choose one:
+
+- 1 = Barely functioning
+- 2 = Very depleted
+- 3 = Low energy, everything feels hard
+- 4 = Below normal
+- 5 = Manageable but not great
+- 6 = Okay / workable
+- 7 = Good
+- 8 = Plenty of energy
+- 9 = High energy
+- 10 = Excellent / full capacity
+
+### Symptoms present today
+
+Tick any that apply:
+
+- Heaviness
+- Overwhelmed
+- Feeling ill
+- Brain fog
+- Low motivation
+- Irritable / short fuse
+- Emotionally flat
+- Restless / scattered
+- Physically drained
+- None
+
+### How much did this affect the day?
+
+Choose one:
+
+- Not at all
+- A little
+- Moderately
+- A lot
+- Completely took over
+
+---
+
+## Period / Cycle Pattern
+
+### Period today?
+
+Choose one:
+
+- Yes
+- No
+- Not sure
+
+---
+
+## Movement / Training
+
+### Resistance training today?
+
+Choose one:
+
+- Yes
+- No
+
+### Cardio today?
+
+Choose one:
+
+- Yes
+- No
+
+### Cardio minutes
+
+`Number field`
+
+### Step count today
+
+`Number field`
+
+### Whoop strain score today
+
+`Number field`
+
+**Note:** Whoop strain score refers to today’s total strain. This is used to understand weekly activity and training load, and whether strain appears linked with energy, symptoms, food consistency, sleep or next-day recovery.
+
+### Movement felt today
+
+Choose one:
+
+- Easy
+- Fine
+- Heavy
+- Harder than usual
+- Didn’t move much today
+
+---
+
+## Food Consistency
+
+### Food consistency today
+
+Choose one:
+
+- On track most of the day
+- Mostly okay with a few wobbles
+- A bit inconsistent
+- Quite snacky / grazey
+- Felt out of control
+- Not sure
+
+### Main thing affecting food today
+
+Choose one main answer:
+
+- Tiredness
+- Stress / emotions
+- Hunger
+- Cravings
+- Poor planning
+- Busy day
+- Child / family demands
+- Food around me
+- Eating out / takeaway
+- Social situation
+- Period
+- Feeling ill
+- Overwhelm
+- Other
+- Nothing obvious
+
+### Anything useful to remember?
+
+Optional free-text field.
+
+Examples of useful notes:
+
+- anything that affected food
+- anything that affected energy
+- anything that affected movement
+- anything that affected mood
+- anything that affected sleep
+- anything that affected cravings
+- anything that affected routine
+- anything that affected training
+
+---
+
+# Weekly Measurements
+
+Complete once per week.
+
+## Date
+
+`Date`
+
+## Weight
+
+`lb`
+
+## Waist measurement
+
+`inches`
+
+## Hip measurement
+
+`inches`
+
+## Was this week influenced by? 
+
+Chose any that strongly apply to this week 
+
+- unusual week
+- illness
+- poor sleep
+- child unwell
+- period week
+- busy work week
+- eating out more than usual
+- training affected
+- energy better than usual
+- confidence better than usual
+
+---
+
+## Weekly notes
+
+Anything else that you think is relevant to this week?
+
+Optional free-text field.
+
+# AI Export Button
+
+The tracker should include a button to copy a clean summary for ChatGPT analysis.
+
+The export should be based on the selected date range.
+
+---
+
+## Copy-To-ChatGPT Export Format
+
+```text
+CLIENT TRACKER SUMMARY
+
+Dates covered:
+
+WEEKLY MEASUREMENTS
+Weight:
+Previous weight:
+Weight change:
+Waist:
+Previous waist:
+Waist change:
+Hips:
+Previous hips:
+Hip change:
+Measurement notes:
+
+MOVEMENT / TRAINING
+Resistance sessions:
+Cardio sessions:
+Total cardio minutes:
+Average daily steps:
+Highest step day:
+Lowest step day:
+Average Whoop strain:
+Highest strain day:
+Lowest strain day:
+
+SLEEP / RECOVERY
+Average usable energy:
+Lowest energy day:
+Highest energy day:
+Sleep quality pattern:
+Number of disrupted sleep nights:
+Most common sleep disruption reason:
+Number of poor / very poor sleep nights:
+
+SYMPTOMS / CAPACITY
+Most common symptoms:
+Heaviness days:
+Overwhelmed days:
+Feeling ill days:
+Brain fog days:
+Low motivation days:
+Physically drained days:
+Days symptoms affected the day a lot or completely:
+
+FOOD CONSISTENCY
+Food consistency pattern:
+Most common food barrier:
+Days on track most of the day:
+Days mostly okay with a few wobbles:
+Days a bit inconsistent:
+Days quite snacky / grazey:
+Days felt out of control:
+
+PERIOD / PRE-BLEED
+Period days logged:
+Possible pre-bleed window days:
+Any visible changes before period days:
+
+FREE-TEXT NOTES
+Notable notes from the selected date range:
+
+Please analyse this supportively. Look for patterns between sleep, usable energy, symptoms, movement, training, Whoop strain, food consistency, weight/measurements and period or pre-bleed timing. Focus on realistic next steps, not perfection.
+
+
+# Insights Tab (this should be on a new page)
+
+The insights tab should be auto-generated from the daily check-ins and weekly measurements.
+
+The client should not need to manually complete a weekly check-in if the data has already been entered.
+
+---
+
+## Weekly Movement / Training Insights
+
+Show for the selected week:
+
+- Resistance sessions completed
+- Cardio sessions completed
+- Total cardio minutes
+- Average daily steps
+- Highest step day
+- Lowest step day
+- Average Whoop strain
+- Highest strain day
+- Lowest strain day
+
+---
+
+## Weekly Energy / Recovery Insights
+
+Show for the selected week:
+
+- Average usable energy
+- Lowest energy day
+- Highest energy day
+- Number of disrupted sleep nights
+- Most common sleep disruption reason
+- Number of poor / very poor sleep nights
+
+---
+
+## Weekly Symptoms / Capacity Insights
+
+Show for the selected week:
+
+- Most common symptoms
+- Number of heaviness days
+- Number of overwhelmed days
+- Number of feeling ill days
+- Number of brain fog days
+- Number of low motivation days
+- Number of physically drained days
+- Number of days where symptoms affected the day “a lot” or “completely took over”
+
+---
+
+## Weekly Food Consistency Insights
+
+Show for the selected week:
+
+- Most common food consistency rating
+- Number of “on track most of the day” days
+- Number of “mostly okay with a few wobbles” days
+- Number of “a bit inconsistent” days
+- Number of “quite snacky / grazey” days
+- Number of “felt out of control” days
+- Most common main food barrier
+
+---
+
+## Weekly Measurement Insights
+
+Show from weekly measurements:
+
+- Current weight
+- Previous weight
+- Weight change
+- Current waist measurement
+- Previous waist measurement
+- Waist change
+- Current hip measurement
+- Previous hip measurement
+- Hip change
+
+Do not over-emphasise one week of scale weight. The purpose is to look at trends over time.
+
+---
+
+## Period / Pre-Bleed Pattern Insights
+
+Once enough data exists, look for patterns around logged period days.
+
+Show:
+
+- Period days logged
+- Whether there appear to be changes in the 7–14 days before period days
+- Whether food consistency changes before period days
+- Whether usable energy changes before period days
+- Whether symptoms increase before period days
+- Whether steps or training reduce before period days
+- Whether Whoop strain changes before period days
+- Whether weight temporarily increases before period days
+
+Use the wording “pre-bleed window” rather than “luteal phase”, because the client is on the pill.
+
+---
+
