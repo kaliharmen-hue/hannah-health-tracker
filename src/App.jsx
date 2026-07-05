@@ -49,11 +49,11 @@ const choices = {
     'Not sure',
   ],
   energy: [
-    '1 - Wiped out',
-    '2 - Low',
-    '3 - Okay',
-    '4 - Good',
-    '5 - Strong',
+    '1 - Wiped out: bare minimum day, everything feels hard',
+    '2 - Low: can function, but energy is limited',
+    '3 - Okay: manageable / normal-ish day',
+    '4 - Good: decent energy, able to get things done',
+    '5 - Strong: high energy / good capacity',
   ],
   parentingLoad: ['Normal', 'Higher than usual', 'Very high', 'Extreme'],
   symptoms: [
