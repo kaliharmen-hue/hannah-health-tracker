@@ -60,7 +60,7 @@ button {
 }
 
 .eyebrow {
-  color: #047857;
+  color: #7c3aed;
   font-size: 0.78rem;
   font-weight: 900;
   letter-spacing: 0;
@@ -110,8 +110,8 @@ button {
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  border-color: #0f766e;
-  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.16);
 }
 
 .tab-bar {
@@ -133,8 +133,8 @@ button {
 }
 
 .tab-bar button.active {
-  border-color: #047857;
-  background: #047857;
+  border-color: #7c3aed;
+  background: #7c3aed;
   color: #ffffff;
 }
 
@@ -215,9 +215,9 @@ button {
 }
 
 .chip-grid button.selected {
-  border-color: #0f766e;
-  background: #e7f6f1;
-  color: #115e59;
+  border-color: #7c3aed;
+  background: #f1ebff;
+  color: #5b21b6;
 }
 
 .export-grid,
@@ -251,7 +251,7 @@ button {
   min-height: 52px;
   border: 0;
   border-radius: 8px;
-  background: #047857;
+  background: #7c3aed;
   color: #ffffff;
   cursor: pointer;
   font-weight: 900;
