@@ -48,9 +48,9 @@ Good daily feedback should sound like coaching, not a report.
 
 Avoid turning every difficult day into a new strategy.
 
-## How To Use Sunday Weekly Review Exports
+## How To Use Weekly Review Exports
 
-Sunday weekly reviews are for pattern analysis and next-week decisions.
+Weekly reviews are for pattern analysis and next-week decisions.
 
 When given a weekly review export, answer:
 
@@ -204,7 +204,7 @@ For daily coaching, keep the response concise:
 - likely reason or pattern
 - one small next action, if needed
 
-For Sunday reviews, use this structure:
+For weekly reviews, use this structure:
 
 ```text
 Patterns showing up:

@@ -27,7 +27,7 @@ npm run dev
 The Export tab has three copy buttons:
 
 - Daily coaching: use during the week for supportive feedback without changing the plan every day.
-- Sunday review: use at the end of the week for pattern analysis and next-week focus.
+- Weekly review: use for pattern analysis and next-week focus whenever she does her weekly check-in.
 - ChatGPT project: use as the shared project instruction text.
 
 ## Storage

@@ -135,7 +135,7 @@ export default function App() {
     [measurements, selectedDate],
   );
 
-  const weekRange = useMemo(() => getSundayReviewRange(selectedDate), [selectedDate]);
+  const weekRange = useMemo(() => getWeeklyReviewRange(selectedDate), [selectedDate]);
   const weeklyData = useMemo(
     () => buildWeeklyData(dailyEntries, measurements, weekRange),
     [dailyEntries, measurements, weekRange],
@@ -189,7 +189,7 @@ export default function App() {
   const copyWeekly = async () => {
     try {
       await copyText(formatWeeklyExport(weeklyData, weekRange));
-      setStatus('Sunday review export copied.');
+      setStatus('Weekly review export copied.');
     } catch {
       setStatus('Copy failed. Please try again.');
     }
@@ -311,7 +311,7 @@ export default function App() {
           <ExportCard title="Daily coaching" button="Copy today's data" onCopy={copyDaily}>
             For feedback during the week without changing the plan every day.
           </ExportCard>
-          <ExportCard title="Sunday review" button="Copy weekly review" onCopy={copyWeekly}>
+          <ExportCard title="Weekly review" button="Copy weekly review" onCopy={copyWeekly}>
             For pattern analysis and one realistic focus for next week.
           </ExportCard>
           <ExportCard title="ChatGPT project" button="Copy instructions" onCopy={copyPrompt}>
@@ -432,7 +432,7 @@ function Insights({ weeklyData, weekRange }) {
     <section className="insights">
       <div className="section-heading">
         <div>
-          <p className="eyebrow">Week ending Sunday</p>
+          <p className="eyebrow">Weekly review</p>
           <h2>{formatDate(weekRange.start)} to {formatDate(weekRange.end)}</h2>
         </div>
       </div>
@@ -700,7 +700,7 @@ function formatWeeklyExport(weeklyData, range) {
     ? weeklyData.measurements.map((entry) => `${entry.date}: waist ${entry.waist || '-'} in, hips ${entry.hips || '-'} in, context ${formatList(entry.context)}, notes ${entry.notes || 'None'}`)
     : ['No tape measurements logged this week.'];
 
-  return `SUNDAY WEEKLY REVIEW
+  return `WEEKLY REVIEW
 
 Dates covered: ${range.start} to ${range.end}
 
@@ -742,7 +742,7 @@ Be supportive, practical and non-judgemental. Do not shame the client about food
 
 Use daily exports for light coaching and encouragement. Do not make major plan changes from one day of data.
 
-Use Sunday weekly review exports for pattern analysis and next-week decisions. Weekly changes are preferred unless there is an obvious safety, recovery or consistency issue.
+Use weekly review exports for pattern analysis and next-step decisions. Weekly changes are preferred unless there is an obvious safety, recovery or consistency issue.
 
 Look for patterns over time across scale weight trends, tape measurements, sleep disruption, parenting/life load, illness, usable energy, hunger, cravings, symptoms, food consistency, steps, resistance training, cardio, Whoop strain, period days and possible pre-bleed patterns.
 
@@ -752,7 +752,7 @@ The client is on the pill. Do not assume a definite natural luteal phase. Look f
 
 Treat symptoms such as heaviness, overwhelm, brain fog, irritability, low motivation, feeling ill, scatteredness or physical depletion as capacity and resilience signals. Do not diagnose.
 
-For Sunday reviews, answer:
+For weekly reviews, answer:
 1. What patterns are showing up?
 2. What may be getting in the way of fat loss or consistency?
 3. What seems to help?
@@ -762,7 +762,7 @@ For Sunday reviews, answer:
 
 Keep recommendations simple. Suggest no more than 1-3 practical changes at a time.`;
 
-function getSundayReviewRange(dateIso) {
+function getWeeklyReviewRange(dateIso) {
   const date = new Date(`${dateIso}T12:00:00`);
   const day = date.getDay();
   const end = new Date(date);
