@@ -49,16 +49,11 @@ const choices = {
     'Not sure',
   ],
   energy: [
-    '1 - Barely functioning',
-    '2 - Very depleted',
-    '3 - Low energy',
-    '4 - Below normal',
-    '5 - Manageable',
-    '6 - Okay / workable',
-    '7 - Good',
-    '8 - Plenty of energy',
-    '9 - High energy',
-    '10 - Full capacity',
+    '1 - Wiped out',
+    '2 - Low',
+    '3 - Okay',
+    '4 - Good',
+    '5 - Strong',
   ],
   parentingLoad: ['Normal', 'Higher than usual', 'Very high', 'Extreme'],
   symptoms: [
@@ -73,7 +68,11 @@ const choices = {
     'Physically drained',
     'None',
   ],
-  capacityImpact: ['Not at all', 'A little', 'Moderately', 'A lot', 'Completely took over'],
+  capacityImpact: [
+    "Didn't really affect the day",
+    'Affected the day a bit',
+    'Affected the day a lot',
+  ],
   hunger: ['Low', 'Normal', 'Higher than usual', 'Very high'],
   cravings: ['None / low', 'Moderate', 'Strong', 'Felt hard to manage'],
   foodConsistency: [
@@ -226,7 +225,7 @@ export default function App() {
             <ChoiceField label="Sleep disrupted?" value={dailyEntry.sleepDisruption} options={choices.sleepDisruption} onChange={(value) => updateDaily('sleepDisruption', value)} />
           </TrackerSection>
 
-          <TrackerSection title="Capacity">
+          <TrackerSection title="Energy + Capacity">
             <ChoiceField label="Usable energy" value={dailyEntry.usableEnergy} options={choices.energy} onChange={(value) => updateDaily('usableEnergy', value)} />
             <ChoiceField label="Parenting / life load" value={dailyEntry.parentingLoad} options={choices.parentingLoad} onChange={(value) => updateDaily('parentingLoad', value)} />
             <MultiChoiceField label="Symptoms" value={dailyEntry.symptoms} options={choices.symptoms} onChange={(value) => updateDaily('symptoms', value)} />
