@@ -236,7 +236,13 @@ export default function App() {
             <ChoiceField label="Hunger" value={dailyEntry.hunger} options={choices.hunger} onChange={(value) => updateDaily('hunger', value)} />
             <ChoiceField label="Cravings" value={dailyEntry.cravings} options={choices.cravings} onChange={(value) => updateDaily('cravings', value)} />
             <ChoiceField label="Food consistency" value={dailyEntry.foodConsistency} options={choices.foodConsistency} onChange={(value) => updateDaily('foodConsistency', value)} />
-            <ChoiceField label="Main thing affecting food" value={dailyEntry.foodBarrier} options={choices.foodBarrier} onChange={(value) => updateDaily('foodBarrier', value)} />
+            <ChoiceField
+              label="Main thing affecting food"
+              helpText="Pick the biggest one, even if a few applied."
+              value={dailyEntry.foodBarrier}
+              options={choices.foodBarrier}
+              onChange={(value) => updateDaily('foodBarrier', value)}
+            />
           </TrackerSection>
 
           <TrackerSection title="Movement">
@@ -262,7 +268,7 @@ export default function App() {
             </label>
           </TrackerSection>
 
-          <TrackerSection title="Tape Measurements">
+          <TrackerSection title="Weekly Check In">
             <Field label="Waist" suffix="in">
               <input inputMode="decimal" value={measurement.waist} onChange={(event) => updateMeasurement('waist', event.target.value)} />
             </Field>
@@ -271,7 +277,7 @@ export default function App() {
             </Field>
             <MultiChoiceField label="Week influenced by" value={measurement.context} options={choices.weeklyContext} onChange={(value) => updateMeasurement('context', value)} />
             <label className="field full-width">
-              <span>Measurement notes</span>
+              <span>Notes from reflecting over the week</span>
               <textarea value={measurement.notes} onChange={(event) => updateMeasurement('notes', event.target.value)} />
             </label>
           </TrackerSection>
@@ -318,10 +324,11 @@ function Field({ label, suffix, children }) {
   );
 }
 
-function ChoiceField({ label, value, options, onChange }) {
+function ChoiceField({ label, helpText, value, options, onChange }) {
   return (
     <label className="field">
       <span>{label}</span>
+      {helpText ? <small>{helpText}</small> : null}
       <select value={value} onChange={(event) => onChange(event.target.value)}>
         <option value="">Select</option>
         {options.map((option) => <option key={option} value={option}>{option}</option>)}
