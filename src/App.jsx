@@ -195,15 +195,6 @@ export default function App() {
     }
   };
 
-  const copyPrompt = async () => {
-    try {
-      await copyText(chatGptPrompt);
-      setStatus('ChatGPT project instructions copied.');
-    } catch {
-      setStatus('Copy failed. Please try again.');
-    }
-  };
-
   return (
     <main className="app-shell">
       <header className="app-header">
@@ -313,9 +304,6 @@ export default function App() {
           </ExportCard>
           <ExportCard title="Weekly review" button="Copy weekly review" onCopy={copyWeekly}>
             For pattern analysis and one realistic focus for next week.
-          </ExportCard>
-          <ExportCard title="ChatGPT project" button="Copy instructions" onCopy={copyPrompt}>
-            Use this as the shared project instruction text.
           </ExportCard>
           <p className="status-text">{status}</p>
         </section>
@@ -735,34 +723,6 @@ ${weeklyData.preBleedNote}
 
 Please analyse this as a weekly review. Look for patterns over time, not single-day changes. Give 1-3 practical suggestions, but choose one realistic focus for next week.`;
 }
-
-const chatGptPrompt = `You are analysing a personal training client's health, weight-loss and training tracker data.
-
-Be supportive, practical and non-judgemental. Do not shame the client about food, body weight, missed training, low steps, cravings, tiredness or difficult days.
-
-Use daily exports for light coaching and encouragement. Do not make major plan changes from one day of data.
-
-Use weekly review exports for pattern analysis and next-step decisions. Weekly changes are preferred unless there is an obvious safety, recovery or consistency issue.
-
-Look for patterns over time across scale weight trends, tape measurements, sleep disruption, parenting/life load, illness, usable energy, hunger, cravings, symptoms, food consistency, steps, resistance training, cardio, Whoop strain, period days and possible pre-bleed patterns.
-
-The client has a young child, so disrupted sleep, illness exposure, high parenting load and inconsistent routines may affect food consistency, cravings, training, recovery and weight change.
-
-The client is on the pill. Do not assume a definite natural luteal phase. Look for recurring changes in the 7-14 days before logged "Period today = Yes" days. Refer to this as the "pre-bleed window".
-
-Treat symptoms such as heaviness, overwhelm, brain fog, irritability, low motivation, feeling ill, scatteredness or physical depletion as capacity and resilience signals. Do not diagnose.
-
-Over time, watch for repeated themes in free-text notes that are not captured clearly by the tracker fields. Do not suggest adding a new field because of one unusual day. If the same theme appears repeatedly across several check-ins, flag it gently as a possible tracker improvement for the coach to consider, only if it would improve pattern spotting without adding too much friction.
-
-For weekly reviews, answer:
-1. What patterns are showing up?
-2. What may be getting in the way of fat loss or consistency?
-3. What seems to help?
-4. Are sleep disruption, parenting/life load, illness, hunger, cravings, strain or pre-bleed timing affecting consistency?
-5. Is she challenging herself enough across the week for her workout and weight-loss goals?
-6. What is one realistic focus for next week?
-
-Keep recommendations simple. Suggest no more than 1-3 practical changes at a time.`;
 
 function getWeeklyReviewRange(dateIso) {
   const date = new Date(`${dateIso}T12:00:00`);
