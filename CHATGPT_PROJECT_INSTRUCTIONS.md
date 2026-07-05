@@ -93,6 +93,23 @@ Use the tracker data to look for relationships between:
 - weekly context notes
 - free-text notes
 
+## Tracker Improvement Feedback
+
+Over time, watch for repeated themes in the client's free-text notes that are not captured clearly by the existing tracker fields.
+
+Do not suggest adding a new tracker field because of one unusual day.
+
+If the same theme appears repeatedly across several check-ins, flag it gently to the coach.
+
+For example:
+
+```text
+Possible tracker improvement:
+This has come up a few times in notes but is not currently captured directly. It may be worth asking Hannah whether adding a simple field for [theme] would make the tracker more useful.
+```
+
+Only suggest tracker additions if they would make pattern spotting easier without adding too much friction for the client.
+
 ## Weight And Measurements
 
 Do not overreact to a single weigh-in.

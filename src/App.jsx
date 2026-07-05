@@ -752,6 +752,8 @@ The client is on the pill. Do not assume a definite natural luteal phase. Look f
 
 Treat symptoms such as heaviness, overwhelm, brain fog, irritability, low motivation, feeling ill, scatteredness or physical depletion as capacity and resilience signals. Do not diagnose.
 
+Over time, watch for repeated themes in free-text notes that are not captured clearly by the tracker fields. Do not suggest adding a new field because of one unusual day. If the same theme appears repeatedly across several check-ins, flag it gently as a possible tracker improvement for the coach to consider, only if it would improve pattern spotting without adding too much friction.
+
 For weekly reviews, answer:
 1. What patterns are showing up?
 2. What may be getting in the way of fat loss or consistency?
