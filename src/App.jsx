@@ -239,6 +239,8 @@ export default function App() {
             <ChoiceField label="Sleep disrupted?" value={dailyEntry.sleepDisruption} options={choices.sleepDisruption} onChange={(value) => updateDaily('sleepDisruption', value)} />
           </TrackerSection>
 
+          <SectionDivider title="Evening" />
+
           <TrackerSection title="Energy + Capacity">
             <ChoiceField label="Usable energy" value={dailyEntry.usableEnergy} options={choices.energy} onChange={(value) => updateDaily('usableEnergy', value)} />
             <ChoiceField label="Parenting / life load" value={dailyEntry.parentingLoad} options={choices.parentingLoad} onChange={(value) => updateDaily('parentingLoad', value)} />
@@ -328,6 +330,14 @@ function TrackerSection({ title, children }) {
       <h2>{title}</h2>
       <div className="form-grid">{children}</div>
     </section>
+  );
+}
+
+function SectionDivider({ title }) {
+  return (
+    <div className="section-divider">
+      <span>{title}</span>
+    </div>
   );
 }
 
@@ -426,6 +436,8 @@ function Insights({ weeklyData, weekRange }) {
           <h2>{formatDate(weekRange.start)} to {formatDate(weekRange.end)}</h2>
         </div>
       </div>
+      <MomentumCard weeklyData={weeklyData} />
+      <ProgressTrend weeklyData={weeklyData} />
       <div className="insight-grid">
         <InsightBlock title="Movement" items={[
           ['Resistance sessions', weeklyData.resistanceSessions],
@@ -466,6 +478,109 @@ function Insights({ weeklyData, weekRange }) {
   );
 }
 
+function MomentumCard({ weeklyData }) {
+  return (
+    <article className="momentum-card">
+      <div>
+        <p className="eyebrow">Momentum this week</p>
+        <h3>Useful wins</h3>
+      </div>
+      <div className="momentum-grid">
+        <MomentumStat label="Days logged" value={`${weeklyData.loggedDays}/7`} />
+        <MomentumStat label="Food steady days" value={weeklyData.steadyFoodDays} />
+        <MomentumStat label="Planned workouts done" value={weeklyData.completedPlannedWorkouts} />
+        <MomentumStat label="Good energy days" value={weeklyData.goodEnergyDays} />
+      </div>
+      <p>{weeklyData.momentumMessage}</p>
+    </article>
+  );
+}
+
+function MomentumStat({ label, value }) {
+  return (
+    <div className="momentum-stat">
+      <strong>{value}</strong>
+      <span>{label}</span>
+    </div>
+  );
+}
+
+function ProgressTrend({ weeklyData }) {
+  const weightPoints = weeklyData.weightTrend;
+  const waistPoints = weeklyData.waistTrend;
+  const hipPoints = weeklyData.hipTrend;
+  const hasChart = weightPoints.length >= 2 || waistPoints.length >= 2 || hipPoints.length >= 2;
+
+  return (
+    <article className="progress-card">
+      <div className="progress-card-heading">
+        <div>
+          <p className="eyebrow">Progress trend</p>
+          <h3>Weight + measurements</h3>
+        </div>
+      </div>
+      {hasChart ? (
+        <>
+          <TrendChart series={[
+            { label: 'Weight', points: weightPoints, color: '#7c3aed' },
+            { label: 'Waist', points: waistPoints, color: '#0f766e' },
+            { label: 'Hips', points: hipPoints, color: '#c2410c' },
+          ]} />
+          <div className="trend-legend">
+            <span><b className="weight-dot" />Weight</span>
+            <span><b className="waist-dot" />Waist</span>
+            <span><b className="hips-dot" />Hips</span>
+          </div>
+        </>
+      ) : (
+        <p className="empty-state">Add a few weights and weekly measurements to see the trend line build.</p>
+      )}
+      <dl className="progress-summary">
+        <div>
+          <dt>Weight trend</dt>
+          <dd>{weeklyData.weightTrendSummary || 'Not enough data yet'}</dd>
+        </div>
+        <div>
+          <dt>Waist trend</dt>
+          <dd>{weeklyData.waistTrendSummary || 'Not enough data yet'}</dd>
+        </div>
+        <div>
+          <dt>Hip trend</dt>
+          <dd>{weeklyData.hipTrendSummary || 'Not enough data yet'}</dd>
+        </div>
+      </dl>
+    </article>
+  );
+}
+
+function TrendChart({ series }) {
+  const chartWidth = 320;
+  const chartHeight = 150;
+  const padding = 18;
+
+  const getPath = (points) => {
+    const minValue = Math.min(...points.map((point) => point.value));
+    const maxValue = Math.max(...points.map((point) => point.value));
+    const valueRange = maxValue - minValue || 1;
+
+    return points.map((point, index) => {
+      const x = padding + (index / Math.max(points.length - 1, 1)) * (chartWidth - padding * 2);
+      const y = padding + ((maxValue - point.value) / valueRange) * (chartHeight - padding * 2);
+      return `${index === 0 ? 'M' : 'L'} ${x.toFixed(1)} ${y.toFixed(1)}`;
+    }).join(' ');
+  };
+
+  return (
+    <svg className="trend-chart" viewBox={`0 0 ${chartWidth} ${chartHeight}`} role="img" aria-label="Progress trend chart">
+      <line x1={padding} y1={chartHeight - padding} x2={chartWidth - padding} y2={chartHeight - padding} />
+      <line x1={padding} y1={padding} x2={padding} y2={chartHeight - padding} />
+      {series.filter((item) => item.points.length >= 2).map((item) => (
+        <path key={item.label} d={getPath(item.points)} stroke={item.color} />
+      ))}
+    </svg>
+  );
+}
+
 function InsightBlock({ title, items }) {
   return (
     <article className="insight-block">
@@ -485,6 +600,12 @@ function InsightBlock({ title, items }) {
 function buildWeeklyData(dailyEntries, measurements, range) {
   const dates = getDatesInRange(range.start, range.end);
   const entries = dates.map((date) => ({ ...defaultDailyEntry, date, ...dailyEntries[date] }));
+  const allEntries = Object.values(dailyEntries)
+    .filter((entry) => entry.date)
+    .sort((a, b) => a.date.localeCompare(b.date));
+  const allMeasurementEntries = Object.values(measurements)
+    .filter((entry) => entry.date)
+    .sort((a, b) => a.date.localeCompare(b.date));
   const measurementEntries = Object.values(measurements)
     .filter((entry) => entry.date >= range.start && entry.date <= range.end)
     .sort((a, b) => a.date.localeCompare(b.date));
@@ -504,6 +625,22 @@ function buildWeeklyData(dailyEntries, measurements, range) {
   return {
     entries,
     measurements: measurementEntries,
+    loggedDays: entries.filter(hasUsefulEntryData).length,
+    steadyFoodDays: entries.filter((entry) => [
+      'On track most of the day',
+      'Mostly okay with a few wobbles',
+    ].includes(entry.foodConsistency)).length,
+    goodEnergyDays: entries.filter((entry) => {
+      const energyScore = parseInt(entry.usableEnergy, 10);
+      return energyScore >= 4;
+    }).length,
+    momentumMessage: getMomentumMessage(entries),
+    weightTrend: allEntries.filter((entry) => toNumber(entry.weight) > 0).map((entry) => ({ date: entry.date, value: toNumber(entry.weight) })),
+    waistTrend: allMeasurementEntries.filter((entry) => toNumber(entry.waist) > 0).map((entry) => ({ date: entry.date, value: toNumber(entry.waist) })),
+    hipTrend: allMeasurementEntries.filter((entry) => toNumber(entry.hips) > 0).map((entry) => ({ date: entry.date, value: toNumber(entry.hips) })),
+    weightTrendSummary: trendSummary(allEntries.filter((entry) => toNumber(entry.weight) > 0).map((entry) => ({ date: entry.date, value: toNumber(entry.weight) })), 'lb'),
+    waistTrendSummary: trendSummary(allMeasurementEntries.filter((entry) => toNumber(entry.waist) > 0).map((entry) => ({ date: entry.date, value: toNumber(entry.waist) })), 'in'),
+    hipTrendSummary: trendSummary(allMeasurementEntries.filter((entry) => toNumber(entry.hips) > 0).map((entry) => ({ date: entry.date, value: toNumber(entry.hips) })), 'in'),
     resistanceSessions: entries.filter((entry) => entry.resistanceTraining === 'Yes').length,
     completedPlannedWorkouts: entries.filter((entry) => entry.plannedWorkout === 'Planned - completed').length,
     missedPlannedWorkouts: entries.filter((entry) => entry.plannedWorkout === 'Planned - missed').length,
@@ -739,6 +876,42 @@ function mostCommon(values) {
 function latestValue(entries, field, unit) {
   const value = [...entries].reverse().find((entry) => entry[field])?.[field];
   return value ? `${value} ${unit}` : '';
+}
+
+function hasUsefulEntryData(entry) {
+  return Boolean(
+    entry.weight ||
+    entry.sleepQuality ||
+    entry.usableEnergy ||
+    entry.foodConsistency ||
+    entry.steps ||
+    entry.notes,
+  );
+}
+
+function getMomentumMessage(entries) {
+  const loggedDays = entries.filter(hasUsefulEntryData).length;
+  const steadyFoodDays = entries.filter((entry) => [
+    'On track most of the day',
+    'Mostly okay with a few wobbles',
+  ].includes(entry.foodConsistency)).length;
+  const completedWorkouts = entries.filter((entry) => entry.plannedWorkout === 'Planned - completed').length;
+
+  if (loggedDays >= 5) return 'Strong data week. This gives the review enough signal to spot real patterns.';
+  if (steadyFoodDays >= 4) return 'Food consistency is showing useful momentum this week.';
+  if (completedWorkouts >= 2) return 'Training consistency is building. Keep looking for the repeatable bits.';
+  if (loggedDays > 0) return 'Every check-in gives useful data, even when the day was messy.';
+  return 'Start with one honest check-in. The trend builds from there.';
+}
+
+function trendSummary(points, unit) {
+  if (points.length < 2) return '';
+  const first = points[0].value;
+  const latest = points.at(-1).value;
+  const change = latest - first;
+  if (change === 0) return `No change yet (${latest} ${unit})`;
+  const direction = change < 0 ? 'down' : 'up';
+  return `${Math.abs(change).toFixed(1)} ${unit} ${direction} since first log`;
 }
 
 function formatList(values = []) {

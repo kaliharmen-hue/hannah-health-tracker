@@ -181,6 +181,27 @@ button {
   padding: 14px;
 }
 
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 2px 8px;
+}
+
+.section-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #d9e0e8;
+}
+
+.section-divider span {
+  color: #7c3aed;
+  font-size: 0.9rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
 .tracker-section h2 {
   color: #101828;
   font-size: 1.1rem;
@@ -302,6 +323,148 @@ button {
 .insight-grid {
   display: grid;
   gap: 12px;
+}
+
+.momentum-card {
+  border: 1px solid #ddd6fe;
+  border-radius: 8px;
+  background: #fbfaff;
+  box-shadow: 0 8px 24px rgba(26, 38, 63, 0.05);
+  padding: 14px;
+}
+
+.momentum-card h3 {
+  color: #101828;
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.momentum-card p:last-child {
+  color: #596579;
+  line-height: 1.45;
+  margin: 12px 0 0;
+}
+
+.momentum-grid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 12px;
+}
+
+.momentum-stat {
+  border: 1px solid #e9d5ff;
+  border-radius: 8px;
+  background: #ffffff;
+  min-height: 76px;
+  padding: 10px;
+}
+
+.momentum-stat strong {
+  color: #7c3aed;
+  display: block;
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.momentum-stat span {
+  color: #596579;
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 850;
+  line-height: 1.25;
+  margin-top: 7px;
+}
+
+.progress-card {
+  border: 1px solid #dde3ea;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(26, 38, 63, 0.05);
+  padding: 14px;
+}
+
+.progress-card-heading h3 {
+  color: #101828;
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.trend-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 12px;
+}
+
+.trend-chart line {
+  stroke: #d9e0e8;
+  stroke-width: 1.5;
+}
+
+.trend-chart path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 4;
+}
+
+.trend-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.trend-legend span {
+  align-items: center;
+  color: #596579;
+  display: inline-flex;
+  font-size: 0.84rem;
+  font-weight: 850;
+  gap: 6px;
+}
+
+.trend-legend b {
+  border-radius: 999px;
+  display: inline-block;
+  height: 9px;
+  width: 9px;
+}
+
+.weight-dot {
+  background: #7c3aed;
+}
+
+.waist-dot {
+  background: #0f766e;
+}
+
+.hips-dot {
+  background: #c2410c;
+}
+
+.progress-summary {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 0;
+}
+
+.progress-summary div {
+  display: grid;
+  gap: 3px;
+}
+
+.progress-summary dt {
+  color: #596579;
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.progress-summary dd {
+  color: #101828;
+  font-weight: 900;
+  margin: 0;
 }
 
 .insight-block {
