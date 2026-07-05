@@ -35,7 +35,7 @@ button {
 .app-shell {
   width: min(100%, 920px);
   margin: 0 auto;
-  padding: 18px 14px 44px;
+  padding: 18px 14px 92px;
 }
 
 .app-header {
@@ -255,6 +255,34 @@ button {
   color: #ffffff;
   cursor: pointer;
   font-weight: 900;
+}
+
+.bottom-export-bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 4;
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+  border-top: 1px solid #d9e0e8;
+  background: rgba(244, 246, 245, 0.96);
+  padding: 12px 0 14px;
+  backdrop-filter: blur(10px);
+}
+
+.bottom-export-bar div {
+  display: grid;
+  gap: 2px;
+}
+
+.bottom-export-bar strong {
+  color: #101828;
+  font-size: 0.9rem;
+}
+
+.bottom-export-bar span {
+  color: #596579;
+  font-size: 0.84rem;
 }
 
 .status-text {

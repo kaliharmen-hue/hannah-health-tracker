@@ -160,6 +160,7 @@ export default function App() {
         updatedAt: new Date().toISOString(),
       },
     }));
+    setStatus('Saved automatically.');
   };
 
   const updateMeasurement = (field, value) => {
@@ -173,21 +174,34 @@ export default function App() {
         updatedAt: new Date().toISOString(),
       },
     }));
+    setStatus('Saved automatically.');
   };
 
   const copyDaily = async () => {
-    await copyText(formatDailyExport(dailyEntry));
-    setStatus('Daily coaching export copied.');
+    try {
+      await copyText(formatDailyExport(dailyEntry));
+      setStatus('Daily coaching export copied.');
+    } catch {
+      setStatus('Copy failed. Please try again.');
+    }
   };
 
   const copyWeekly = async () => {
-    await copyText(formatWeeklyExport(weeklyData, weekRange));
-    setStatus('Sunday review export copied.');
+    try {
+      await copyText(formatWeeklyExport(weeklyData, weekRange));
+      setStatus('Sunday review export copied.');
+    } catch {
+      setStatus('Copy failed. Please try again.');
+    }
   };
 
   const copyPrompt = async () => {
-    await copyText(chatGptPrompt);
-    setStatus('ChatGPT project instructions copied.');
+    try {
+      await copyText(chatGptPrompt);
+      setStatus('ChatGPT project instructions copied.');
+    } catch {
+      setStatus('Copy failed. Please try again.');
+    }
   };
 
   return (
@@ -281,6 +295,8 @@ export default function App() {
               <textarea value={measurement.notes} onChange={(event) => updateMeasurement('notes', event.target.value)} />
             </label>
           </TrackerSection>
+
+          <BottomExportBar status={status} onCopy={copyDaily} />
         </>
       )}
 
@@ -386,6 +402,18 @@ function ExportCard({ title, button, onCopy, children }) {
       <p>{children}</p>
       <button className="primary-button" onClick={onCopy}>{button}</button>
     </article>
+  );
+}
+
+function BottomExportBar({ status, onCopy }) {
+  return (
+    <section className="bottom-export-bar" aria-label="ChatGPT export">
+      <div>
+        <strong>Saved automatically</strong>
+        <span>{status}</span>
+      </div>
+      <button className="primary-button" onClick={onCopy}>Copy today for ChatGPT</button>
+    </section>
   );
 }
 
