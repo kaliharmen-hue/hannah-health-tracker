@@ -299,7 +299,7 @@ export default function App() {
 
       {activeTab === 'export' && (
         <section className="export-grid">
-          <ExportCard title="Daily coaching" button="Copy today's data" onCopy={copyDaily}>
+          <ExportCard title="Daily coaching" button="Copy selected date" onCopy={copyDaily}>
             For feedback during the week without changing the plan every day.
           </ExportCard>
           <ExportCard title="Weekly review" button="Copy weekly review" onCopy={copyWeekly}>
@@ -410,7 +410,7 @@ function BottomExportBar({ status, onCopy }) {
         <strong>Saved automatically</strong>
         <span>{status}</span>
       </div>
-      <button className="primary-button" onClick={onCopy}>Copy today for ChatGPT</button>
+      <button className="primary-button" onClick={onCopy}>Copy selected date for ChatGPT</button>
     </section>
   );
 }
